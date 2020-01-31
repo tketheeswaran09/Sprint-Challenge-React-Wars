@@ -6,3 +6,19 @@
   text-shadow: 1px 1px 5px #fff;
 }
 /* write your parent styles in here for your App.js */
+
+.header-container {
+  display: flex;
+  justify-content: center;
+}
+
+.cards-container {
+  height: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.card-container {
+  display: flex;
+}
