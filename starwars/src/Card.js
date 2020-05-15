@@ -1,12 +1,9 @@
-import React, {
-  useEffect,
-  useState
-} from "react";
-import styled from "styled-components";
-import "./App.css";
-import axios from "axios";
+import React, { useEffect, useState } from 'react';
+import styled from 'styled-components';
+import './App.css';
+import axios from 'axios';
 
-const StyledCard = styled.div `
+const StyledCard = styled.div`
   height: 30em;
   width: 20em;
   margin: 1em;
@@ -26,13 +23,13 @@ const StyledCard = styled.div `
 `;
 
 function Card(props) {
-  const [imgUrl, setImgUrl] = useState("");
+  const [imgUrl, setImgUrl] = useState('');
 
   function format(nameStr) {
     return nameStr
-      .replace("-", " ")
-      .split(" ")
-      .join("+");
+      .replace('-', ' ')
+      .split(' ')
+      .join('+');
   }
 
   useEffect(() => {
@@ -45,34 +42,21 @@ function Card(props) {
       .then(response => setImgUrl(response.data.hits[0].webformatURL))
       .catch(error => console.log(error));
   });
-  return ( <
-    div className = "card-container" >
-    <
-    StyledCard >
-    <
-    h1 > {
-      props.data.name
-    } < /h1> <
-    h3 > Birth Year: {
-      props.data.birth_year
-    } < /h3> <
-    h3 > Height: {
-      props.data.height
-    }
-    cm < /h3> <
-    h3 > Weight: {
-      props.data.mass
-    }
-    kg < /h3> <
-    h3 > Homeworld: < /h3> <
-    img className = "card-image"
-    src = {
-      imgUrl
-    }
-    alt = "character" / >
-    <
-    /StyledCard> < /
-    div >
+  return (
+    <div className="card-container">
+      <StyledCard>
+        <h1> {props.data.name} </h1>
+        <h3> Birth Year: {props.data.birth_year} </h3>
+        <h3>
+          Height: {props.data.height}cm
+        </h3>
+        <h3>
+          Weight: {props.data.mass}kg
+        </h3>
+        <h3> Homeworld: </h3>
+        <img className="card-image" src={imgUrl} alt="character" />
+      </StyledCard>
+    </div>
   );
 }
 
